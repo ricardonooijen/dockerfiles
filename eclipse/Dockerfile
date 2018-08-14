@@ -36,20 +36,3 @@ RUN groupadd eclipse \
         && chown -R eclipse:eclipse /home/eclipse
 WORKDIR /home/eclipse
 ENTRYPOINT [ "/entrypoint.sh" ]
-
-#FROM alpine:latest
-#RUN cat /etc/apk/repositories \
-#        && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-#        && apk add --no-cache \
-#        shadow \
-#        openjdk8 \
-#        gosu
-#COPY --from=builder /opt/eclipse /opt/eclipse
-#COPY --from=builder /entrypoint.sh /entrypoint.sh
-#COPY --from=builder /root/.eclipse /home/eclipse/.eclipse
-#RUN groupadd eclipse \
-#        && useradd eclipse -d /home/eclipse -g eclipse \
-#        && chown -R eclipse:eclipse /opt/eclipse \
-#        && chown -R eclipse:eclipse /home/eclipse
-#WORKDIR /home/eclipse
-#ENTRYPOINT [ "/entrypoint.sh" ]
