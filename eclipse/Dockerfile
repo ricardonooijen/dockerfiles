@@ -8,10 +8,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         tar \
         curl \
         && rm -rf /var/lib/apt/lists/*
-WORKDIR /opt/eclipse
-RUN curl -Lo /opt/eclipse/eclipse-oxygen.tar.gz ${eclipse_download_url} \
-        && tar -xvzf /opt/eclipse/eclipse-oxygen.tar.gz --transform='s#^eclipse/#oxygen/#g' \
-        && rm /opt/eclipse/eclipse-oxygen.tar.gz \
+WORKDIR /opt/eclipse/oxygen
+# Install Eclipse JEE (oxygen)
+RUN curl -L ${eclipse_download_url} | tar -xvz --strip-components=1
 # Install DevStyle
 RUN /opt/eclipse/oxygen/eclipse -application org.eclipse.equinox.p2.director -nosplash -repository https://www.genuitec.com/updates/devstyle/ci -i com.genuitec.eclipse.theming.feature.feature.group
 COPY resources/entrypoint.sh /entrypoint.sh
