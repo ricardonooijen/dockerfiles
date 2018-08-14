@@ -5,9 +5,6 @@ ENV eclipse_download_url https://www.eclipse.org/downloads/download.php?file=/te
 RUN mkdir -p /usr/share/man/man1
 RUN apt-get update && apt-get install -y --no-install-recommends \
         openjdk-8-jdk \
-        gosu \
-        && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y --no-install-recommends \
         tar \
         curl \
         && rm -rf /var/lib/apt/lists/*
