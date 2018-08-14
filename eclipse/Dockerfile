@@ -12,7 +12,6 @@ WORKDIR /opt/eclipse
 RUN curl -Lo /opt/eclipse/eclipse-oxygen.tar.gz ${eclipse_download_url} \
         && tar -xvzf /opt/eclipse/eclipse-oxygen.tar.gz --transform='s#^eclipse/#oxygen/#g' \
         && rm /opt/eclipse/eclipse-oxygen.tar.gz \
-        && rm -rf /var/lib/apt/lists/*
 # Install DevStyle
 RUN /opt/eclipse/oxygen/eclipse -application org.eclipse.equinox.p2.director -nosplash -repository https://www.genuitec.com/updates/devstyle/ci -i com.genuitec.eclipse.theming.feature.feature.group
 COPY resources/entrypoint.sh /entrypoint.sh
